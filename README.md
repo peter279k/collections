@@ -31,7 +31,22 @@ $collection = new Collection(['lorem', 'ipsum', 'dolor'])->all();
 The `get` method retrieves the specified item from the collection.
 
 ```php
-$collection = new Collection(['foo' => 'bar', 'lorem' => 'ipsum'])->get('lorem');
+$collection = new Collection(['foo' => 'bar', 'lorem' => 'ipsum']);
+
+$result = $collection->get('lorem')
 
 // ipsum
+```
+
+### push
+the `push` method pushes an item to the end of the collection.
+
+```php
+$collection = new Collection([1, 2, 3]);
+
+$collection->push(4);
+
+$collection->all();
+
+// [1, 2, 3, 4]
 ```

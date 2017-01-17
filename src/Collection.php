@@ -60,7 +60,7 @@ class Collection
      */
     public function put($key, $value)
     {
-        return $this->itemSet($key, $value);
+        return $this->itemSet($value, $key);
     }
 
     /**

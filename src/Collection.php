@@ -2,6 +2,8 @@
 
 namespace Vulcan\Collections;
 
+use Vulcan\Collections\Support\Arr;
+
 class Collection
 {
     /**
@@ -39,7 +41,7 @@ class Collection
      */
     public function get($key)
     {
-        return $this->itemGet($key);
+        return Arr::get($this->items, $key);
     }
 
     /**
@@ -126,17 +128,6 @@ class Collection
         } else {
             $this->items[$key] = $value;
         }
-    }
-
-    /**
-     * Get the value of the specified key from the array.
-     *
-     * @param  mixed  $key
-     * @return mixed
-     */
-    private function itemGet($key)
-    {
-        return $this->items[$key];
     }
 
     /**

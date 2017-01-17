@@ -1,0 +1,22 @@
+{
+    "name": "vulcan/collections",
+    "description": "A simple PHP collection implementation",
+    "keywords": ["vulcan", "collection", "array"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shea Lewis",
+            "email": "shea.lewis89@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vulcan\\Collections\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

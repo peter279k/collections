@@ -74,4 +74,17 @@ class CollectionTest extends TestCase
 
         $this->assertSame('baz', $collection->last());
     }
+
+    public function test_each_method()
+    {
+        $collection = new Collection(['foo', 'bar', 'baz']);
+
+        $result = [];
+
+        $collection->each(function($item, $key) use (&$result) {
+            $result[$key] = $item;
+        });
+
+        $this->assertEquals($result, $collection->all());
+    }
 }

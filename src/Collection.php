@@ -114,6 +114,20 @@ class Collection implements CollectionInterface
         return $this->itemLast();
     }
 
+    /**
+     * Loop through the items with the defined callback.
+     *
+     * @return void
+     */
+    public function each(callable $callable)
+    {
+        foreach ($this->items as $key => $item) {
+            $callable($item, $key);
+        }
+
+        return $this;
+    }
+
     //
 
     /**

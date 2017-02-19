@@ -87,4 +87,15 @@ class CollectionTest extends TestCase
 
         $this->assertEquals($result, $collection->all());
     }
+
+    public function test_map_method()
+    {
+        $collection = new Collection([1, 2, 3, 4, 5]);
+
+        $mapped = $collection->map(function($item, $key) {
+            return $item * 2;
+        });
+
+        $this->assertSame([2, 4, 6, 8, 10], $mapped->all());
+    }
 }

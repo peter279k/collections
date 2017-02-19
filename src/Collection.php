@@ -117,6 +117,7 @@ class Collection implements CollectionInterface
     /**
      * Loop through the items with the defined callback.
      *
+     * @param  callable  $callable
      * @return void
      */
     public function each(callable $callable)
@@ -126,6 +127,23 @@ class Collection implements CollectionInterface
         }
 
         return $this;
+    }
+
+    /**
+     * Apply the callable to the collection items.
+     *
+     * @param  callable  $callable
+     * @return self
+     */
+    public function map(callable $callable)
+    {
+        $results = [];
+
+        foreach ($this->items as $key => $item) {
+            $results[] = $callable($item, $key);
+        }
+
+        return new self($results);
     }
 
     //

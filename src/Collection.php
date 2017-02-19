@@ -137,11 +137,8 @@ class Collection implements CollectionInterface
      */
     public function map(callable $callable)
     {
-        $results = [];
-
-        foreach ($this->items as $key => $item) {
-            $results[] = $callable($item, $key);
-        }
+        $keys    = array_keys($this->items);
+        $results = array_map($callable, $this->items, $keys);
 
         return new self($results);
     }

@@ -3,15 +3,16 @@
 namespace Vulcan\Collections;
 
 use Vulcan\Collections\Support\Arr;
+use Vulcan\Collections\Contracts\Collection as CollectionInterface;
 
-class Collection
+class Collection implements CollectionInterface
 {
     /**
      * Items of the collection.
      *
      * @var array
      */
-    protected $items;
+    protected $items = [];
 
     /**
      * Create a new collection instance.
@@ -20,7 +21,7 @@ class Collection
      */
     public function __construct($items = [])
     {
-        $this->items = $items;
+        $this->items = Arr::transmute($items);
     }
 
     /**

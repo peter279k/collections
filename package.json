@@ -1,0 +1,21 @@
+{
+  "name": "collections",
+  "version": "1.0.0",
+  "description": "A simple PHP collection implementation to simplify the means of working with arrays of data.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vulcan-project/collections.git"
+  },
+  "author": "Shea Lewis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vulcan-project/collections/issues"
+  },
+  "homepage": "https://github.com/vulcan-project/collections#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-phpunit": "^0.22.2",
+    "gulp-run": "^1.7.1"
+  }
+}

@@ -2,6 +2,8 @@
 
 namespace Vulcan\Collections\Support;
 
+use Vulcan\Collections\Contracts\Collection;
+
 class Arr
 {
     /**
@@ -27,5 +29,22 @@ class Arr
         }
 
         return $array;
+    }
+
+    /**
+     * Transmute passed items as an array.
+     *
+     * @param  mixed  $items
+     * @return array
+     */
+    public static function transmute($items)
+    {
+        if (is_array($items)) {
+            return $items;
+        } elseif ($items instanceof Collection) {
+            return $items->all();
+        }
+
+        return (array) $items;
     }
 }

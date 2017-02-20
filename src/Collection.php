@@ -3,10 +3,11 @@
 namespace Vulcan\Collections;
 
 use ArrayAccess;
+use Countable;
 use Vulcan\Collections\Support\Arr;
 use Vulcan\Collections\Contracts\Collection as CollectionInterface;
 
-class Collection implements CollectionInterface, ArrayAccess
+class Collection implements CollectionInterface, ArrayAccess, Countable
 {
     /**
      * Items of the collection.

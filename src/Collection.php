@@ -143,6 +143,25 @@ class Collection implements CollectionInterface
         return new self($results);
     }
 
+    /**
+     * Filter the collection items through the callable.
+     *
+     * @param  callable  $callable
+     * @return self
+     */
+    public function filter(callable $callable)
+    {
+        $results = [];
+
+        foreach ($this->items as $key => $item) {
+            if ($callable($item, $key)) {
+                $results[] = $item;
+            }
+        }
+
+        return new self($results);
+    }
+
     //
 
     /**

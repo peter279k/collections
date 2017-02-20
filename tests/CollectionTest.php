@@ -98,4 +98,23 @@ class CollectionTest extends TestCase
 
         $this->assertSame([2, 4, 6, 8, 10], $mapped->all());
     }
+
+    public function test_filter_method()
+    {
+        $collection = new Collection([
+            ['title' => 'Foo', 'price' => 86],
+            ['title' => 'Bar', 'price' => 132],
+            ['title' => 'Lorem', 'price' => 102],
+            ['title' => 'Ipsum', 'price' => 13]
+        ]);
+
+        $expensiveItems = $collection->filter(function($item, $key) {
+            return $item['price'] > 100;
+        });
+
+        $this->assertSame([
+            ['title' => 'Bar', 'price' => 132],
+            ['title' => 'Lorem', 'price' => 102]
+        ], $expensiveItems->all());
+    }
 }

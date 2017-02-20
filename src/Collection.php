@@ -3,11 +3,13 @@
 namespace Vulcan\Collections;
 
 use ArrayAccess;
+use ArrayIterator;
 use Countable;
+use IteratorAggregate;
 use Vulcan\Collections\Support\Arr;
 use Vulcan\Collections\Contracts\Collection as CollectionInterface;
 
-class Collection implements CollectionInterface, ArrayAccess, Countable
+class Collection implements CollectionInterface, ArrayAccess, Countable, IteratorAggregate
 {
     /**
      * Items of the collection.
@@ -35,6 +37,16 @@ class Collection implements CollectionInterface, ArrayAccess, Countable
     public static function make($items)
     {
         return new static($items);
+    }
+
+    /**
+     * Returns an external iterator.
+     *
+     * @return void
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->items);
     }
 
     /**

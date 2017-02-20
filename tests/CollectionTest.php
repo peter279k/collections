@@ -117,4 +117,23 @@ class CollectionTest extends TestCase
             ['title' => 'Lorem', 'price' => 102]
         ], $expensiveItems->all());
     }
+
+    public function test_reject_method()
+    {
+        $collection = new Collection([
+            ['title' => 'Foo', 'price' => 86],
+            ['title' => 'Bar', 'price' => 132],
+            ['title' => 'Lorem', 'price' => 102],
+            ['title' => 'Ipsum', 'price' => 13]
+        ]);
+
+        $affordableItems = $collection->reject(function($item, $key) {
+            return $item['price'] > 100;
+        });
+
+        $this->assertSame([
+            ['title' => 'Foo', 'price' => 86],
+            ['title' => 'Ipsum', 'price' => 13]
+        ], $affordableItems->all());
+    }
 }

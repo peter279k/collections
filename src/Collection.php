@@ -162,6 +162,19 @@ class Collection implements CollectionInterface
         return new self($results);
     }
 
+    /**
+     * Reject the collection items through the callable.
+     *
+     * @param  callable  $callable
+     * @return self
+     */
+    public function reject(callable $callable)
+    {
+        return $this->filter(function($item, $key) use ($callable) {
+            return ! $callable($item, $key);
+        });
+    }
+
     //
 
     /**

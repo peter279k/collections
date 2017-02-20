@@ -136,4 +136,25 @@ class CollectionTest extends TestCase
             ['title' => 'Ipsum', 'price' => 13]
         ], $affordableItems->all());
     }
+
+    public function test_filter_map_methods()
+    {
+        $collection = new Collection([
+            ['name' => 'John Doe', 'email' => 'john@example.com'],
+            ['name' => 'Alan Doe', 'email' => 'alan@example.com'],
+            ['name' => 'Jane Doe', 'email' => null],
+            ['name' => 'Zoe Doe', 'email' => null],
+        ]);
+
+        $userEmails = $collection->filter(function($item, $key) {
+            return $item['email'] !== null;
+        })->map(function($item, $key) {
+            return $item['email'];
+        });
+
+        $this->assertSame([
+            'john@example.com',
+            'alan@example.com',
+        ], $userEmails->all());
+    }
 }

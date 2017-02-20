@@ -1,5 +1,6 @@
 <p align="center">
-    ![Travis](https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
+    <a href="https://travis-ci.org/vulcan-project/framework"><img src="https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square" alt="Build Status"></a>
+    <a href="https://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
 </p>
 
 # Getting Started
@@ -20,7 +21,7 @@ This package is compliant with [PSR-1](https://github.com/php-fig/fig-standards/
 
 # Using Collections
 
-### Creating Collections
+## Creating Collections
 You have a couple options for creating a new Collection instance.
 
 One, by simply creating a new instance of the class directly:

@@ -1,4 +1,8 @@
 <p align="center">
+    <img src="collections.png" alt="Collections">
+</p>
+
+<p align="center">
     <a href="https://travis-ci.org/vulcan-project/framework"><img src="https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square" alt="Build Status"></a>
     <a href="https://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
 </p>

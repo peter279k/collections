@@ -2,10 +2,11 @@
 
 namespace Vulcan\Collections;
 
+use ArrayAccess;
 use Vulcan\Collections\Support\Arr;
 use Vulcan\Collections\Contracts\Collection as CollectionInterface;
 
-class Collection implements CollectionInterface
+class Collection implements CollectionInterface, ArrayAccess
 {
     /**
      * Items of the collection.
@@ -17,11 +18,22 @@ class Collection implements CollectionInterface
     /**
      * Create a new collection instance.
      *
-     * @param  array  $items
+     * @param  mixed  $items
      */
-    public function __construct($items = [])
+    public function __construct($items)
     {
         $this->items = Arr::transmute($items);
+    }
+
+    /**
+     * Helper static method to easily create a new Collection instance.
+     *
+     * @param  mixed  $items;
+     * @return self
+     */
+    public static function make($items)
+    {
+        return new static($items);
     }
 
     /**
@@ -173,6 +185,32 @@ class Collection implements CollectionInterface
         return $this->filter(function($item, $key) use ($callable) {
             return ! $callable($item, $key);
         });
+    }
+
+    //
+
+    public function offsetExists($offset)
+    {
+        return array_key_exists($offset, $this->items);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->items[$offset];
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        if ($offset === null) {
+            $this->items[] = $value;
+        } else {
+            $this->items[$offset] = $value;
+        }
+    }
+
+    public function offsetUnset($offset)
+    {
+        unset($this->items[$offset]);
     }
 
     //

@@ -7,6 +7,12 @@ use Vulcan\Collections\Collection;
 
 class CollectionTest extends TestCase
 {
+    public function test_static_make_method()
+    {
+        $collection = Collection::make(['foo', 'bar', 'baz']);
+        $this->assertSame(['foo', 'bar', 'baz'], $collection->all());
+    }
+
     public function test_all_method()
     {
         $collection = new Collection(['foo', 'bar', 'baz']);
@@ -156,5 +162,40 @@ class CollectionTest extends TestCase
             'john@example.com',
             'alan@example.com',
         ], $userEmails->all());
+    }
+
+    public function test_map_filter_methods_separately()
+    {
+        $employees = new Collection([
+            ['name' => 'Mary', 'email' => 'mary@example.com', 'salaried' => true],
+            ['name' => 'John', 'email' => 'john@example.com', 'salaried' => false],
+            ['name' => 'Kelly', 'email' => 'kelly@example.com', 'salaried' => true],
+        ]);
+
+        $employeeEmails = $employees->map(function ($employee) {
+            return $employee['email'];
+        });
+
+        $salariedEmployees = $employees->filter(function ($employee) {
+            return $employee['salaried'];
+        });
+
+        $this->assertSame([
+            'mary@example.com',
+            'john@example.com',
+            'kelly@example.com'
+        ], $employeeEmails->all());
+
+        $this->assertSame([
+            ['name' => 'Mary', 'email' => 'mary@example.com', 'salaried' => true],
+            ['name' => 'Kelly', 'email' => 'kelly@example.com', 'salaried' => true],
+        ], $salariedEmployees->all());
+    }
+
+    public function test_array_access_implementation()
+    {
+        $collection = Collection::make([1, 2, 3]);
+
+        $this->assertSame(3, $collection[2]);
     }
 }

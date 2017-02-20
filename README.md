@@ -1,5 +1,5 @@
 <p align="center">
-    [![Travis](https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square)](#) [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](#)
+    ![Travis](https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
 </p>
 
 # Getting Started

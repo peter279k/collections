@@ -190,16 +190,35 @@ class Collection implements CollectionInterface, ArrayAccess, Countable
 
     //
 
+    /**
+     * Whether or not an offset exists.
+     *
+     * @param  mixed  $offset
+     * @return bool
+     */
     public function offsetExists($offset)
     {
         return array_key_exists($offset, $this->items);
     }
 
+    /**
+     * Returns the value at specified offset.
+     *
+     * @param  mixed  $offset
+     * @return mixed
+     */
     public function offsetGet($offset)
     {
         return $this->items[$offset];
     }
 
+    /**
+     * Assigns a value to the specified offset.
+     *
+     * @param  mixed  $offset
+     * @param  mixed  $value
+     * @return void
+     */
     public function offsetSet($offset, $value)
     {
         if ($offset === null) {
@@ -209,6 +228,12 @@ class Collection implements CollectionInterface, ArrayAccess, Countable
         }
     }
 
+    /**
+     * Unsets an offset.
+     *
+     * @param  mixed  $offset
+     * @return void
+     */
     public function offsetUnset($offset)
     {
         unset($this->items[$offset]);

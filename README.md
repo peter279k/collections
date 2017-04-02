@@ -126,7 +126,9 @@ The `keys` method returns a new Collection instance containing all the keys of t
 ```php
 $collection = Collection::make(['foo' => 'bar', 'lorem' => 'ipsum']);
 
-$result = $collection->keys()->all();
+$result = $collection->keys();
+
+$result->all();
 
 // ['foo', 'lorem']
 ```
@@ -202,7 +204,7 @@ The `remove` method removes an item rom the collection by its key.
 ```php
 $collection = Collection::make([0, 1, 2, 3]);
 
-$collection->forget(0);
+$collection->remove(0);
 
 $collection->all();
 
@@ -215,7 +217,9 @@ The `values` method returns a new Collection instance containing all the values 
 ```php
 $collection = Collection::make(['foo' => 'bar', 'lorem' => 'ipsum']);
 
-$result = $collection->values()->all();
+$result = $collection->values();
+
+$result->all();
 
 // ['bar', 'ipsum']
 ```

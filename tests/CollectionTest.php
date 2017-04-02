@@ -198,4 +198,30 @@ class CollectionTest extends TestCase
 
         $this->assertSame(3, $collection[2]);
     }
+
+    public function test_values_method()
+    {
+        $collection = Collection::make([
+            'lorem' => 'foo',
+            'ipsum' => 'bar',
+            'dolar' => 'baz'
+        ]);
+
+        $values = $collection->values();
+
+        $this->assertSame(['foo', 'bar', 'baz'], $values->all());
+    }
+
+    public function test_keys_method()
+    {
+        $collection = Collection::make([
+            'lorem' => 'foo',
+            'ipsum' => 'bar',
+            'dolar' => 'baz'
+        ]);
+
+        $keys = $collection->keys();
+
+        $this->assertSame(['lorem', 'ipsum', 'dolar'], $keys->all());
+    }
 }

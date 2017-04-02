@@ -7,9 +7,9 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Vulcan\Collections\Support\Arr;
-use Vulcan\Collections\Contracts\Collection as CollectionInterface;
+use Vulcan\Collections\Contracts\Collection as CollectionContract;
 
-class Collection implements CollectionInterface, ArrayAccess, Countable, IteratorAggregate
+class Collection implements CollectionContract, ArrayAccess, Countable, IteratorAggregate
 {
     /**
      * Items of the collection.
@@ -249,6 +249,28 @@ class Collection implements CollectionInterface, ArrayAccess, Countable, Iterato
     public function offsetUnset($offset)
     {
         unset($this->items[$offset]);
+    }
+
+    /**
+     * Returns a new Collection instance containing an
+     * indexed array of values.
+     *
+     * @return self
+     */
+    public function values()
+    {
+        return new static(array_values($this->items));
+    }
+
+    /**
+     * Returns a new Collection instance containing an
+     * indexed array of keys.
+     *
+     * @return self
+     */
+    public function keys()
+    {
+        return new static(array_keys($this->items));
     }
 
     //

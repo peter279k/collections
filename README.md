@@ -115,9 +115,20 @@ The `get` method returns the item at a given key.
 ```php
 $collection = Collection::make(['foo' => 'bar', 'lorem' => 'ipsum']);
 
-$result = $collection->get('lorem')
+$result = $collection->get('lorem');
 
 // ipsum
+```
+
+### `keys()`
+The `keys` method returns a new Collection instance containing all the keys of the collection items.
+
+```php
+$collection = Collection::make(['foo' => 'bar', 'lorem' => 'ipsum']);
+
+$result = $collection->keys()->all();
+
+// ['foo', 'lorem']
 ```
 
 ### `last()`
@@ -196,4 +207,15 @@ $collection->forget(0);
 $collection->all();
 
 // [1, 2, 3]
+```
+
+### `values()`
+The `values` method returns a new Collection instance containing all the values of the collection items.
+
+```php
+$collection = Collection::make(['foo' => 'bar', 'lorem' => 'ipsum']);
+
+$result = $collection->values()->all();
+
+// ['bar', 'ipsum']
 ```

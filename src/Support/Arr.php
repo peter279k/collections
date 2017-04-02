@@ -2,10 +2,28 @@
 
 namespace Vulcan\Collections\Support;
 
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 use Vulcan\Collections\Contracts\Collection;
 
 class Arr
 {
+    /**
+     * Flatten the passed multi-dimensional array into a single level.
+     *
+     * @param  array  $array
+     * @return array
+     */
+    public static function flatten($array)
+    {
+        $array = $array instanceof Collection ? $array->all() : $array;
+
+        return iterator_to_array(
+            new RecursiveIteratorIterator(new RecursiveArrayIterator($array)),
+            false
+        );
+    }
+
     /**
      * Get an item from an array with dot notation support.
      *

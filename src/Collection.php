@@ -273,6 +273,17 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
         return new static(array_keys($this->items));
     }
 
+    /**
+     * Returns a new Collection instance containing a
+     * flattened array of items.
+     *
+     * @return self
+     */
+    public function flatten()
+    {
+        return new static(Arr::flatten($this->items));
+    }
+
     //
 
     /**

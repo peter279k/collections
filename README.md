@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <a href="https://travis-ci.org/vulcan-project/framework"><img src="https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square" alt="Build Status"></a>
+    <a href="https://travis-ci.org/vulcan-project/collections"><img src="https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square" alt="Build Status"></a>
     <a href="https://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
 </p>
 
@@ -107,6 +107,25 @@ The `first` method returns the first element in the collection.
 Collection::make([1, 2, 3, 4])->first();
 
 // 1
+```
+
+### `flatten()`
+The `flatten` method returns a new Collection instance containing a flattened array of items.
+
+```php
+$collection = Collection::make([
+    'name' => 'Kai',
+    'profile' => [
+        'age' => 28,
+        'favorite_games' => ['Mass Effect', 'Oxygen Not Included', 'event[0]']
+    ]
+]);
+
+$result = $collection->flatten();
+
+$result->all();
+
+// ['Kai', 28, 'Mass Effect', 'Oxygen Not Included', 'event[0]']
 ```
 
 ### `get()`

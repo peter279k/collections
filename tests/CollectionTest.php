@@ -224,4 +224,21 @@ class CollectionTest extends TestCase
 
         $this->assertSame(['lorem', 'ipsum', 'dolar'], $keys->all());
     }
+
+    public function test_flatten_method()
+    {
+        $collection = Collection::make([
+            'name'    => 'Kai',
+            'profile' => [
+                'age'            => 28,
+                'favorite_games' => ['Mass Effect', 'Oxygen Not Included', 'event[0]']
+            ]
+        ]);
+
+        $flattened = $collection->flatten();
+
+        $this->assertSame([
+            'Kai', 28, 'Mass Effect', 'Oxygen Not Included', 'event[0]'
+        ], $flattened->all());
+    }
 }

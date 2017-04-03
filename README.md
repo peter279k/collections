@@ -246,16 +246,20 @@ $collection = Collection::make([4, 1, 2, 3, 5])->sort()->reverse()->values()->al
 ```
 
 ### `sort()`
-The `sort` method sort the collection of items in ascending order or optionally through a user-defined comparison function.
+The `sort` method sorts the collection of items by their values in ascending order or optionally through a user-defined comparison function.
 
 ```php
-$collection = Collection::make([4, 1, 2, 3, 5])->sort()->values()->all();
+$data = [4, 1, 2, 3, 5];
+```
+
+```php
+$collection = Collection::make($data)->sort()->values()->all();
 
 // [1, 2, 3, 4, 5]
 ```
 
 ```php
-$collection = Collection::make([4, 1, 2, 3, 5])->sort(function($a, $b) {
+$collection = Collection::make($data)->sort(function($a, $b) {
     if ($a === $b) {
         return 0;
     }
@@ -264,6 +268,37 @@ $collection = Collection::make([4, 1, 2, 3, 5])->sort(function($a, $b) {
 })->values()->all();
 
 // [1, 2, 3, 4, 5]
+```
+
+### `sortByKey()`
+The `sortByKey` method sorts the collection of items by their keys in ascending order or optionally through a user-defined comparison function.
+
+```php
+$data = [
+    'foo4' => 1,
+    'foo2' => 2,
+    'foo5' => 3,
+    'foo3' => 4,
+    'foo1' => 5
+];
+```
+
+```php
+$collection = Collection::make($data)->sortByKey()->values()->all();
+
+// [5, 2, 4, 1, 3]
+```
+
+```php
+$collection = Collection::make($data)->sortByKey(function($a, $b) {
+    if ($a === $b) {
+        return 0;
+    }
+
+    return ($a < $b) ? -1 : 1;
+})->values()->all();
+
+// [5, 2, 4, 1, 3]
 ```
 
 ### `values()`

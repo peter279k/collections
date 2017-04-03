@@ -267,6 +267,38 @@ class CollectionTest extends TestCase
         $this->assertEquals([1, 2, 3, 4, 5], $collection->values()->all());
     }
 
+    public function test_sort_by_key_method()
+    {
+        $collection = Collection::make([
+            'foo4' => 1,
+            'foo2' => 2,
+            'foo5' => 3,
+            'foo3' => 4,
+            'foo1' => 5
+        ]);
+
+        $this->assertEquals([5, 2, 4, 1, 3], $collection->sortByKey()->values()->all());
+    }
+
+    public function test_sort_by_key_method_with_callback()
+    {
+        $collection = Collection::make([
+            'foo4' => 1,
+            'foo2' => 2,
+            'foo5' => 3,
+            'foo3' => 4,
+            'foo1' => 5
+        ])->sortByKey(function($a, $b) {
+            if ($a === $b) {
+                return 0;
+            }
+
+            return ($a < $b) ? -1 : 1;
+        });
+
+        $this->assertEquals([5, 2, 4, 1, 3], $collection->values()->all());
+    }
+
     public function test_reverse_method()
     {
         $collection = Collection::make([4, 1, 3, 2, 5])->reverse();

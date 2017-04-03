@@ -285,7 +285,7 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
     }
 
     /**
-     * Sort the collection of items through a user-defined
+     * Sort the collection of item values through a user-defined
      * comparison function.
      *
      * @param  callable|null  $callable
@@ -298,6 +298,24 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
         $callback
             ? uasort($items, $callback)
             : asort($items);
+
+        return new static($items);
+    }
+
+    /**
+     * Sort the collection of item keys through a user-defined
+     * comparison function.
+     *
+     * @param  callable|null  $callable
+     * @return static
+     */
+    public function sortByKey(callable $callback = null)
+    {
+        $items = $this->items;
+
+        $callback
+            ? uksort($items, $callback)
+            : ksort($items);
 
         return new static($items);
     }

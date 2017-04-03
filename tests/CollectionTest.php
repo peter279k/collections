@@ -241,4 +241,38 @@ class CollectionTest extends TestCase
             'Kai', 28, 'Mass Effect', 'Oxygen Not Included', 'event[0]'
         ], $flattened->all());
     }
+
+    public function test_sort_method()
+    {
+        $collection = Collection::make([4, 1, 3, 2, 5]);
+        $this->assertSame([1, 2, 3, 4, 5], $collection->sort()->values()->all());
+
+        $collection = Collection::make([-4, 1, 3, -3, -2, 0, -5, 2, 4, -1, 5]);
+        $this->assertSame([-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5], $collection->sort()->values()->all());
+
+        $collection = Collection::make(['foo3', 'bar1', 'foo2', 'foo1', 'bar2', 'bar3']);
+        $this->assertSame(['bar1', 'bar2', 'bar3', 'foo1', 'foo2', 'foo3'], $collection->sort()->values()->all());
+    }
+
+    public function test_sort_method_with_callback()
+    {
+        $collection = Collection::make([4, 1, 3, 2, 5])->sort(function($a, $b) {
+            if ($a === $b) {
+                return 0;
+            }
+
+            return ($a < $b) ? -1 : 1;
+        });
+
+        $this->assertEquals([1, 2, 3, 4, 5], $collection->values()->all());
+    }
+
+    public function test_reverse_method()
+    {
+        $collection = Collection::make([4, 1, 3, 2, 5])->reverse();
+        $this->assertEquals([5, 2, 3, 1, 4], $collection->values()->all());
+
+        $collection = Collection::make([4, 1, 3, 2, 5])->sort()->reverse();
+        $this->assertEquals([5, 4, 3, 2, 1], $collection->values()->all());
+    }
 }

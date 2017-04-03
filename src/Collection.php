@@ -284,6 +284,34 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
         return new static(Arr::flatten($this->items));
     }
 
+    /**
+     * Sort the collection of items through a user-defined
+     * comparison function.
+     *
+     * @param  callable|null  $callable
+     * @return static
+     */
+    public function sort(callable $callback = null)
+    {
+        $items = $this->items;
+
+        $callback
+            ? uasort($items, $callback)
+            : asort($items);
+
+        return new static($items);
+    }
+
+    /**
+     * Reverse the collection items.
+     *
+     * @return static
+     */
+    public function reverse()
+    {
+        return new static(array_reverse($this->items, true));
+    }
+
     //
 
     /**

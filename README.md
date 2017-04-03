@@ -230,6 +230,42 @@ $collection->all();
 // [1, 2, 3]
 ```
 
+### `reverse()`
+The `reverse` method reverses the collection items.
+
+```php
+$collection = Collection::make([4, 1, 2, 3, 5])->reverse()->values()->all();
+
+// [5, 3, 2, 1, 4]
+```
+
+```php
+$collection = Collection::make([4, 1, 2, 3, 5])->sort()->reverse()->values()->all();
+
+// [5, 4, 3, 2, 1]
+```
+
+### `sort()`
+The `sort` method sort the collection of items in ascending order or optionally through a user-defined comparison function.
+
+```php
+$collection = Collection::make([4, 1, 2, 3, 5])->sort()->values()->all();
+
+// [1, 2, 3, 4, 5]
+```
+
+```php
+$collection = Collection::make([4, 1, 2, 3, 5])->sort(function($a, $b) {
+    if ($a === $b) {
+        return 0;
+    }
+
+    return ($a < $b) ? -1 : 1;
+})->values()->all();
+
+// [1, 2, 3, 4, 5]
+```
+
 ### `values()`
 The `values` method returns a new Collection instance containing all the values of the collection items.
 

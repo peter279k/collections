@@ -72,6 +72,16 @@ $collection = $collection->each(function($item, $key) {
 });
 ```
 
+To stop iterating over the items and break out of the loop, simply return `false` from your callback:
+
+```php
+$collection = $collection->each(function($item, $key) {
+    if ($someCondition === true) {
+        return false;
+    }
+});
+```
+
 ### `exists()`
 The `exists` method determines if the given key exists in the collection.
 

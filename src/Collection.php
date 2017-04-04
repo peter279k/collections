@@ -148,7 +148,9 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
     public function each(callable $callable)
     {
         foreach ($this->items as $key => $item) {
-            $callable($item, $key);
+            if ($callback($item, $key) === false) {
+                break;
+            }
         }
 
         return $this;

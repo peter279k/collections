@@ -94,6 +94,23 @@ class CollectionTest extends TestCase
         $this->assertEquals($result, $collection->all());
     }
 
+    public function test_each_method_break()
+    {
+        $collection = new Collection([1, 2, 3, 'foo', 'bar', 'baz']);
+
+        $result = [];
+
+        $collection->each(function($item, $key) use (&$result) {
+            $result[$key] = $item;
+
+            if (is_string($item)) {
+                return false;
+            }
+        });
+
+        $this->assertEquals([1, 2, 3, 'foo'], $result);
+    }
+
     public function test_map_method()
     {
         $collection = new Collection([1, 2, 3, 4, 5]);

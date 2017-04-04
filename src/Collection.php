@@ -145,7 +145,7 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
      * @param  callable  $callable
      * @return void
      */
-    public function each(callable $callable)
+    public function each(callable $callback)
     {
         foreach ($this->items as $key => $item) {
             if ($callback($item, $key) === false) {

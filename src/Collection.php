@@ -2,6 +2,7 @@
 
 namespace Vulcan\Collections;
 
+use Arrayable;
 use ArrayAccess;
 use ArrayIterator;
 use Countable;
@@ -23,7 +24,7 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
      *
      * @param  mixed  $items
      */
-    public function __construct($items)
+    public function __construct($items = [])
     {
         $this->items = Arr::transmute($items);
     }
@@ -330,6 +331,30 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
     public function reverse()
     {
         return new static(array_reverse($this->items, true));
+    }
+
+    /**
+     * Group an associative array by a field or using a callback.
+     *
+     * @param  callable  $callback
+     * @param  bool  $preserveKeys
+     * @return static
+     */
+    public function groupBy(callable $callback)
+    {
+        $results = [];
+
+        foreach ($this->items as $key => $value) {
+            $groupKey = $callback($value, $key, $this->items);
+
+            if (! isset($results[$groupKey])) {
+                $results[$groupKey] = [];
+            }
+
+            $results[$groupKey][$key] = $value;
+        }
+
+        return new static($results);
     }
 
     //

@@ -149,6 +149,36 @@ $result = $collection->get('lorem');
 // ipsum
 ```
 
+### `groupBy()`
+The `groupBy` method returns a new Collection instance of items grouped an associative array using a callback.
+
+```php
+$collection = Collection::make([
+    'foo' => ['type' => 'foobar'],
+    'bar' => ['type' => 'foobar'],
+    'lorem' => ['type' => 'lorem ipsum'],
+    'ipsum' => ['type' => 'lorem ipsum']
+]);
+
+$result = $collection->groupBy(function($item) {
+    return $item['type'];
+});
+
+$result->all();
+
+//
+[
+    'foobar' => [
+        'foo' => ['type' => 'foobar'],
+        'bar' => ['type' => 'foobar'],
+    ],
+    'lorem ipsum' => [
+        'lorem' => ['type' => 'lorem ipsum'],
+        'ipsum' => ['type' => 'lorem ipsum']
+    ]
+]
+```
+
 ### `keys()`
 The `keys` method returns a new Collection instance containing all the keys of the collection items.
 

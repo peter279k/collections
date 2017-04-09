@@ -324,4 +324,37 @@ class CollectionTest extends TestCase
         $collection = Collection::make([4, 1, 3, 2, 5])->sort()->reverse();
         $this->assertEquals([5, 4, 3, 2, 1], $collection->values()->all());
     }
+
+    public function test_group_by_method()
+    {
+        $data = new Collection([
+            'hello bot'    => ['type' => 'atomic', 'responses' => []],
+            'my name is _' => ['type' => 'alphabetic', 'responses' => []],
+            'i am #'       => ['type' => 'numeric', 'responses' => []],
+            'i like *'     => ['type' => 'global', 'responses' => []],
+            'yes'          => ['type' => 'atomic', 'responses' => []]
+        ]);
+
+        $result = $data->groupBy(function($item) {
+            return $item['type'];
+        });
+
+        $expected = [
+            'atomic' => [
+                'hello bot'    => ['type' => 'atomic', 'responses' => []],
+                'yes'          => ['type' => 'atomic', 'responses' => []]
+            ],
+            'alphabetic' => [
+                'my name is _' => ['type' => 'alphabetic', 'responses' => []],
+            ],
+            'numeric' => [
+                'i am #'       => ['type' => 'numeric', 'responses' => []],
+            ],
+            'global' => [
+                'i like *'     => ['type' => 'global', 'responses' => []],
+            ]
+        ];
+
+        $this->assertEquals($expected, $result->all());
+    }
 }

@@ -104,11 +104,11 @@ class Collection implements CollectionContract, ArrayAccess, Countable, Iterator
     }
 
     /**
-     * Determine if the given item exists in the collection.
+     * Determine if the collection has the given item.
      *
      * @param mixed $key
      */
-    public function exists($key)
+    public function has($key)
     {
         return $this->itemExists($key);
     }

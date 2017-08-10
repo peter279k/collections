@@ -52,12 +52,12 @@ class CollectionTest extends TestCase
         $this->assertSame(['foo' => 'bar'], $collection->all());
     }
 
-    public function test_exists_method()
+    public function test_has_method()
     {
         $collection = new Collection(['foo' => 'bar']);
 
-        $this->assertTrue($collection->exists('foo'));
-        $this->assertFalse($collection->exists('bar'));
+        $this->assertTrue($collection->has('foo'));
+        $this->assertFalse($collection->has('bar'));
     }
 
     public function test_count_method()

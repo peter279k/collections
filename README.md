@@ -1,13 +1,4 @@
 # Axiom Collections
-
-<p align="center">
-    <a href="https://travis-ci.org/axiom-labs/collections"><img src="https://img.shields.io/travis/axiom-labs/collections.svg?style=flat-square" alt="Build Status"></a>
-    <a href="https://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
-</p>
-
-# Getting Started
-
-## Introduction
 Collections is a simple and light-weight PHP collections class to help facilitate and ease the means of working with data arrays in an OOP oriented manner.
 
 ## Installing Axiom Collections
@@ -21,9 +12,9 @@ $ composer require axiom/collections
 
 This package is compliant with [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md), [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md), and [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md). If you find any compliance oversights, please send a patch via pull request.
 
-# Using Collections
+## Using Collections
 
-## Creating Collections
+### Creating Collections
 You have a couple options for creating a new Collection instance.
 
 One, by simply creating a new instance of the class directly:
@@ -38,10 +29,10 @@ Or two, but using the `make` static helper method:
 $collection = Collection::make([1, 2, 3]);
 ```
 
-## Methods
+### Methods
 For the remainder of this documentation, we will run through each of the available methods provided by the Collection class. All of these methods may be chained together to fluently manipulate the underlying array of data. And lastly, in almost every case, each method will return a new `Collections` instance, preserving the original copy of the collection where necessary.
 
-### `all()`
+#### `all()`
 The `all` method retrieves all the items from the collection.
 
 ```php
@@ -50,7 +41,7 @@ Collection::make([1, 2, 3])->all();
 // [1, 2, 3]
 ```
 
-### `count()`
+#### `count()`
 The `count` method returns the total number of items in the collection:
 
 ```php
@@ -61,7 +52,7 @@ $collection->count();
 // 4
 ```
 
-### `each()`
+#### `each()`
 The `each` method iterates over the items in the collection and passes each item through a callback:
 
 ```php
@@ -80,7 +71,7 @@ $collection = $collection->each(function($item, $key) {
 });
 ```
 
-### `exists()`
+#### `exists()`
 The `exists` method determines if the given key exists in the collection.
 
 ```php
@@ -91,7 +82,7 @@ $collection->exists('name');
 // true
 ```
 
-### `filter()`
+#### `filter()`
 The `filter` method filters the collection using the given callback, keeping only those items that pass a given truth test:
 
 ```php
@@ -108,7 +99,7 @@ $filtered->all();
 
 For the inverse of `filter`, see the `reject` method.
 
-### `first()`
+#### `first()`
 The `first` method returns the first element in the collection.
 
 ```php
@@ -117,7 +108,7 @@ Collection::make([1, 2, 3, 4])->first();
 // 1
 ```
 
-### `flatten()`
+#### `flatten()`
 The `flatten` method returns a new Collection instance containing a flattened array of items.
 
 ```php
@@ -136,7 +127,7 @@ $result->all();
 // ['Kai', 28, 'Mass Effect', 'Oxygen Not Included', 'event[0]']
 ```
 
-### `get()`
+#### `get()`
 The `get` method returns the item at a given key.
 
 ```php
@@ -147,7 +138,7 @@ $result = $collection->get('lorem');
 // ipsum
 ```
 
-### `groupBy()`
+#### `groupBy()`
 The `groupBy` method returns a new Collection instance of items grouped an associative array using a callback.
 
 ```php
@@ -177,7 +168,7 @@ $result->all();
 ]
 ```
 
-### `keys()`
+#### `keys()`
 The `keys` method returns a new Collection instance containing all the keys of the collection items.
 
 ```php
@@ -190,7 +181,7 @@ $result->all();
 // ['foo', 'lorem']
 ```
 
-### `last()`
+#### `last()`
 The `last` method returns the last element in the collection.
 
 ```
@@ -199,7 +190,7 @@ Collection::make([1, 2, 3, 4])->last();
 // 4
 ```
 
-### `map()`
+#### `map()`
 The `map` method iterates through the collection and passes each valye and key to the given callback. The callback is free to modify the item and return it, thus forming a new collection of modified items:
 
 ```
@@ -214,7 +205,7 @@ $multiplied->all();
 // [2, 4, 6, 8, 10]
 ```
 
-### `push()`
+#### `push()`
 the `push` method appends an item to the end of the collection.
 
 ```php
@@ -227,7 +218,7 @@ $collection->all();
 // [1, 2, 3, 4, 5]
 ```
 
-### `put()`
+#### `put()`
 The `put` method sets the given key and value in the collection.
 
 ```php
@@ -240,7 +231,7 @@ $collection->all();
 // ['bot_id' => 1, 'name' => 'Loki']
 ```
 
-### `reject()`
+#### `reject()`
 The `reject` method filters the collection using the given callback. The callback should return `true` is the items should be **removed** from the resulting collection.
 
 ```php
@@ -255,7 +246,7 @@ $filtered->all();
 // [1, 2]
 ```
 
-### `remove()`
+#### `remove()`
 The `remove` method removes an item rom the collection by its key.
 
 ```php
@@ -268,7 +259,7 @@ $collection->all();
 // [1, 2, 3]
 ```
 
-### `reverse()`
+#### `reverse()`
 The `reverse` method reverses the collection items.
 
 ```php
@@ -283,7 +274,7 @@ $collection = Collection::make([4, 1, 2, 3, 5])->sort()->reverse()->values()->al
 // [5, 4, 3, 2, 1]
 ```
 
-### `sort()`
+#### `sort()`
 The `sort` method sorts the collection of items by their values in ascending order or optionally through a user-defined comparison function.
 
 ```php
@@ -308,7 +299,7 @@ $collection = Collection::make($data)->sort(function($a, $b) {
 // [1, 2, 3, 4, 5]
 ```
 
-### `sortByKey()`
+#### `sortByKey()`
 The `sortByKey` method sorts the collection of items by their keys in ascending order or optionally through a user-defined comparison function.
 
 ```php
@@ -339,7 +330,7 @@ $collection = Collection::make($data)->sortByKey(function($a, $b) {
 // [5, 2, 4, 1, 3]
 ```
 
-### `values()`
+#### `values()`
 The `values` method returns a new Collection instance containing all the values of the collection items.
 
 ```php

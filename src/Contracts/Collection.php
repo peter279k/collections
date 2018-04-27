@@ -1,6 +1,6 @@
 <?php
 
-namespace Vulcan\Collections\Contracts;
+namespace Axiom\Collections\Contracts;
 
 interface Collection
 {

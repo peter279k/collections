@@ -1,10 +1,10 @@
 <?php
 
-namespace Vulcan\Collections\Support;
+namespace Axiom\Collections\Support;
 
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
-use Vulcan\Collections\Contracts\Collection;
+use Axiom\Collections\Contracts\Collection;
 
 class Arr
 {

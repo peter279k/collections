@@ -1,13 +1,13 @@
 <?php
 
-namespace Vulcan\Collections;
+namespace Axiom\Collections;
 
 use Countable;
 use ArrayAccess;
 use ArrayIterator;
 use IteratorAggregate;
-use Vulcan\Collections\Support\Arr;
-use Vulcan\Collections\Contracts\Collection as CollectionContract;
+use Axiom\Collections\Support\Arr;
+use Axiom\Collections\Contracts\Collection as CollectionContract;
 
 class Collection implements CollectionContract, ArrayAccess, Countable, IteratorAggregate
 {

@@ -1,9 +1,7 @@
-<p align="center">
-    <img src="collections.png" alt="Collections">
-</p>
+# Axiom Collections
 
 <p align="center">
-    <a href="https://travis-ci.org/vulcan-project/collections"><img src="https://img.shields.io/travis/vulcan-project/collections.svg?style=flat-square" alt="Build Status"></a>
+    <a href="https://travis-ci.org/axiom-labs/collections"><img src="https://img.shields.io/travis/axiom-labs/collections.svg?style=flat-square" alt="Build Status"></a>
     <a href="https://choosealicense.com/licenses/mit"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License"></a>
 </p>
 
@@ -12,13 +10,13 @@
 ## Introduction
 Collections is a simple and light-weight PHP collections class to help facilitate and ease the means of working with data arrays in an OOP oriented manner.
 
-## Installing Vulcan Collections
-Collections requires PHP 7.0 or later. It is not tested against HHVM or older (supported) versions of PHP, but there is nothing in this package (other than PHPUnit) that should cause a failure. Keep in mind that support is not guaranteed in these situations.
+## Installing Axiom Collections
+Axiom Collections requires PHP 7.0 or later. It is not tested against HHVM or older (supported) versions of PHP, but there is nothing in this package (other than PHPUnit) that should cause a failure. Keep in mind that support is not guaranteed in these situations.
 
 It is recommended that you install the package using Composer.
 
 ```
-$ composer require vulcan/collections
+$ composer require axiom/collections
 ```
 
 This package is compliant with [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md), [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md), and [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md). If you find any compliance oversights, please send a patch via pull request.
@@ -31,7 +29,7 @@ You have a couple options for creating a new Collection instance.
 One, by simply creating a new instance of the class directly:
 
 ```php
-$collection = new \Vulcan\Collections\Collection([1, 2, 3]);
+$collection = new \Axiom\Collections\Collection([1, 2, 3]);
 ```
 
 Or two, but using the `make` static helper method:

@@ -3,7 +3,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use Vulcan\Collections\Collection;
+use Axiom\Collections\Collection;
 
 class CollectionTest extends TestCase
 {

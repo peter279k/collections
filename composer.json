@@ -1,7 +1,7 @@
 {
-    "name": "vulcan/collections",
+    "name": "axiom/collections",
     "description": "A simple PHP collection implementation",
-    "keywords": ["vulcan", "collection", "array"],
+    "keywords": ["axiom", "collection", "array"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Vulcan\\Collections\\": "src/"
+            "Axiom\\Collections\\": "src/"
         }
     },
     "autoload-dev": {
